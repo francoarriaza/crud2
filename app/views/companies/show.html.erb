@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
+
+<%= form_with(model: [ @company, @employee ]) do |form| %> 
+
+  <div class="field">
+    <%= form.label :first_name %><br />
+    <%= form.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %><br />
+    <%= form.text_field :last_name, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Sign up" %>
+  </div>
+<% end %>
+
+<% @companies.each do |company| %>
+  <%company.employee.first_name %>  
+  <%company.employee.last_name %>
+  <%company.employee.email %>
+<% end %>
